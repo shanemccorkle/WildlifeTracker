@@ -15,6 +15,7 @@ class SightingsController < ApplicationController
   # GET /sightings/new
   def new
     @sighting = Sighting.new
+    @sighting.animal = Animal.find(params[:animal_id])
   end
 
   # GET /sightings/1/edit
@@ -25,6 +26,7 @@ class SightingsController < ApplicationController
   # POST /sightings.json
   def create
     @sighting = Sighting.new(sighting_params)
+    @sighting.animal = Animal.find(params[:animal_id])
 
     respond_to do |format|
       if @sighting.save
